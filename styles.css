@@ -393,7 +393,7 @@ main {
   font-size: 12px;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 840px) {
   .hero,
   .map-grid {
     grid-template-columns: 1fr;
