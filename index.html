@@ -22,10 +22,13 @@
     <div class="bg-shape bg-shape-b"></div>
 
     <header class="topbar">
-      <div class="brand">CiLi <span>Cidade Limpa</span></div>
+      <div class="brand">
+        <img class="brand-logo" src="./assets/logo.png" alt="Logo CiLi" />
+        <span>CiLi <strong>Cidade Limpa</strong></span>
+      </div>
       <nav class="menu">
         <a href="#como-funciona">Como Funciona</a>
-        <a href="#mapa-publico">Mapa Publico</a>
+        <a href="#mapa-publico">Mapa Público</a>
         <a href="#apoie">Apoie</a>
       </nav>
       <a class="btn btn-primary" id="downloadHeaderBtn" href="#" target="_blank" rel="noreferrer">Baixar App</a>
@@ -34,24 +37,27 @@
     <main>
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">Plataforma cidada para zeladoria urbana</p>
+          <p class="eyebrow">Plataforma cidadã para zeladoria urbana</p>
           <h1>Sua rua tem problema? Registre, publique e gere resposta.</h1>
           <p>
-            A CiLi ajuda moradores a documentar ocorrencias urbanas com foto, localizacao e evidencias.
-            Com apoio da comunidade, cada relato ganha relevancia para acelerar retornos e resolucoes.
+            A CiLi ajuda moradores a documentar ocorrências urbanas com foto, localização e evidências.
+            Com apoio da comunidade, cada relato ganha relevância para acelerar retornos e resoluções.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" id="downloadPrimaryBtn" href="#" target="_blank" rel="noreferrer">Baixar agora</a>
-            <a class="btn btn-ghost" href="#mapa-publico">Ver publicacoes no mapa</a>
+            <a class="btn btn-ghost" href="#mapa-publico">Ver publicações no mapa</a>
           </div>
         </div>
         <div class="hero-card">
-          <h2>O que voce pode fazer na CiLi</h2>
+          <div class="hero-card-top">
+            <h2>O que você pode fazer na CiLi</h2>
+            <img class="hero-avatar" src="./assets/avatar.png" alt="Avatar da CiLi" />
+          </div>
           <ul>
-            <li>Registrar problemas com foto e localizacao</li>
+            <li>Registrar problemas com foto e localização</li>
             <li>Publicar no Mapa CiLi para mobilizar vizinhos</li>
-            <li>Receber apoios e comentarios da comunidade</li>
-            <li>Gerar envio formal para orgaos publicos</li>
+            <li>Receber apoios e comentários da comunidade</li>
+            <li>Gerar envio formal para órgãos públicos</li>
           </ul>
         </div>
       </section>
@@ -74,26 +80,26 @@
           </article>
           <article class="step">
             <span>3</span>
-            <h3>Fortaleca</h3>
-            <p>Mais apoios e comentarios aumentam visibilidade e pressao.</p>
+            <h3>Fortaleça</h3>
+            <p>Mais apoios e comentários aumentam visibilidade e pressão.</p>
           </article>
           <article class="step">
             <span>4</span>
             <h3>Resolva</h3>
-            <p>Acompanhe status e registre retorno da resolucao.</p>
+            <p>Acompanhe status e registre retorno da resolução.</p>
           </article>
         </div>
       </section>
 
       <section id="mapa-publico" class="section map-section">
         <div class="section-head">
-          <p class="eyebrow">Mapa publico CiLi</p>
-          <h2>Publicacoes cidadas por municipio</h2>
+          <p class="eyebrow">Mapa público CiLi</p>
+          <h2>Publicações cidadãs por município</h2>
         </div>
 
         <div class="map-controls">
           <label>
-            Municipio
+            Município
             <select id="cityFilter"></select>
           </label>
           <label>
@@ -110,12 +116,12 @@
         <div class="map-grid">
           <div class="map-card">
             <div id="publicMap"></div>
-            <p id="mapHint" class="hint">Carregando publicacoes...</p>
+            <p id="mapHint" class="hint">Carregando publicações...</p>
           </div>
 
           <aside class="ranking-card">
-            <h3>Top 5 problemas no municipio</h3>
-            <p class="hint" id="rankingHint">Classificacao por volume de relatos, apoios e comentarios.</p>
+            <h3>Top 5 problemas no município</h3>
+            <p class="hint" id="rankingHint">Classificação por volume de relatos, apoios e comentários.</p>
             <div id="rankingList" class="ranking-list"></div>
           </aside>
         </div>
@@ -124,11 +130,11 @@
       <section class="section donation" id="apoie">
         <div class="section-head">
           <p class="eyebrow">Apoie a CiLi</p>
-          <h2>Doacao voluntaria via PIX</h2>
+          <h2>Doação voluntária via PIX</h2>
         </div>
         <p>
-          Sua contribuicao ajuda na manutencao de servidores, programadores e equipe administrativa
-          que sustentam a evolucao da plataforma.
+          Sua contribuição ajuda na manutenção de servidores, programadores e equipe administrativa
+          que sustentam a evolução da plataforma.
         </p>
 
         <div class="pix-card">
@@ -144,7 +150,7 @@
 
     <footer class="footer">
       <p>CiLi - Cidade Limpa</p>
-      <p>Engajamento cidadao para cidades mais eficientes e responsivas.</p>
+      <p>Engajamento cidadão para cidades mais eficientes e responsivas.</p>
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -152,4 +158,3 @@
     <script src="./app.js"></script>
   </body>
 </html>
-

@@ -3,7 +3,7 @@ const CONFIG = {
   supabaseAnonKey:
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5nanVhcmZubGVwd212em1rdWt3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxMjI4NzcsImV4cCI6MjA4NDY5ODg3N30.w67LAEv_D6dn-N2IIGEBKbniwWNdDe7IuBEWptsEqC0",
   landingUrl: "https://cili-cidadelimpa.vercel.app/",
-  downloadUrl: "https://cili-cidadelimpa.vercel.app/",
+  downloadUrl: "https://github.com/k4b41t1/cili-cidadelimpa/releases/download/Version/app-debug.apk",
   pixKey: "cili.cidadelimpa@gmail.com",
   pixOwner: "CiLi - Cidade Limpa",
 };
@@ -34,7 +34,7 @@ function setDonationInfo() {
         byId("copyPixBtn").textContent = "Copiar chave PIX";
       }, 1800);
     } catch (_e) {
-      alert("Nao foi possivel copiar automaticamente. Copie manualmente.");
+      alert("Não foi possível copiar automaticamente. Copie manualmente.");
     }
   });
 }
@@ -66,7 +66,7 @@ function markerColor(status) {
 
 async function loadCities() {
   const cityFilter = byId("cityFilter");
-  cityFilter.innerHTML = `<option value="">Todos os municipios</option>`;
+  cityFilter.innerHTML = `<option value="">Todos os municípios</option>`;
 
   const { data, error } = await state.supabase.rpc("public_map_cities", { p_limit: 400 });
   if (error) throw error;
@@ -134,9 +134,9 @@ async function loadMapReports() {
 
   if (bounds.length > 0) {
     state.map.fitBounds(bounds, { padding: [24, 24] });
-    mapHint.textContent = `${rows.length} publicacoes carregadas.`;
+    mapHint.textContent = `${rows.length} publicações carregadas.`;
   } else {
-    mapHint.textContent = "Nenhuma publicacao encontrada para este filtro.";
+    mapHint.textContent = "Nenhuma publicação encontrada para este filtro.";
   }
 }
 
@@ -154,22 +154,22 @@ async function loadRanking() {
 
   const rows = data || [];
   if (!rows.length) {
-    rankingList.innerHTML = "<p class='hint'>Sem dados para o municipio selecionado.</p>";
-    rankingHint.textContent = "Sem ocorrencias no filtro atual.";
+    rankingList.innerHTML = "<p class='hint'>Sem dados para o município selecionado.</p>";
+    rankingHint.textContent = "Sem ocorrências no filtro atual.";
     return;
   }
 
   rankingHint.textContent = city
     ? `Top problemas de ${city}`
-    : "Top problemas gerais de todos os municipios";
+    : "Top problemas gerais de todos os municípios";
 
   rankingList.innerHTML = rows
     .map((r, idx) => {
       return `
         <article class="rank-item">
-          <h4>${idx + 1}. ${escapeHtml(r.category_label || r.category_id || "Nao informado")}</h4>
+          <h4>${idx + 1}. ${escapeHtml(r.category_label || r.category_id || "Não informado")}</h4>
           <p>Relatos: <b>${Number(r.total_reports || 0)}</b></p>
-          <p>Apoios: <b>${Number(r.total_supports || 0)}</b> | Comentarios: <b>${Number(r.total_comments || 0)}</b></p>
+          <p>Apoios: <b>${Number(r.total_supports || 0)}</b> | Comentários: <b>${Number(r.total_comments || 0)}</b></p>
           <p>Pendentes: <b>${Number(r.pending_reports || 0)}</b> | Resolvidos: <b>${Number(r.resolved_reports || 0)}</b></p>
         </article>
       `;
@@ -192,7 +192,7 @@ async function bootstrap() {
   setDonationInfo();
 
   if (!window.supabase?.createClient) {
-    byId("mapHint").textContent = "Biblioteca Supabase indisponivel.";
+    byId("mapHint").textContent = "Biblioteca Supabase indisponível.";
     return;
   }
 
@@ -202,8 +202,8 @@ async function bootstrap() {
   try {
     await loadCities();
   } catch (err) {
-    console.error("Erro ao carregar municipios:", err);
-    byId("cityFilter").innerHTML = `<option value="">Todos os municipios</option>`;
+    console.error("Erro ao carregar municípios:", err);
+    byId("cityFilter").innerHTML = `<option value="">Todos os municípios</option>`;
   }
 
   byId("reloadBtn").addEventListener("click", refreshAll);

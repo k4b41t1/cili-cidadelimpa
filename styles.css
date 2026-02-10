@@ -59,13 +59,25 @@ body {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
   font-size: 20px;
 }
 
-.brand span {
+.brand strong {
   color: var(--brand);
+}
+
+.brand-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  object-fit: cover;
+  border: 1px solid #a7f3d0;
+  background: #fff;
 }
 
 .menu {
@@ -126,8 +138,24 @@ main {
   padding: 24px;
 }
 
+.hero-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
 .hero-card h2 {
   margin: 0 0 12px;
+}
+
+.hero-avatar {
+  width: 74px;
+  height: 74px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 20px rgba(6, 78, 59, 0.18);
 }
 
 .hero-card ul {
@@ -347,6 +375,11 @@ main {
   .menu {
     display: none;
   }
+
+  .brand-logo {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -368,4 +401,3 @@ main {
     align-items: flex-start;
   }
 }
-
