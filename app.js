@@ -3,7 +3,7 @@ const CONFIG = {
   supabaseAnonKey:
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5nanVhcmZubGVwd212em1rdWt3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxMjI4NzcsImV4cCI6MjA4NDY5ODg3N30.w67LAEv_D6dn-N2IIGEBKbniwWNdDe7IuBEWptsEqC0",
   landingUrl: "https://cili-cidadelimpa.vercel.app/",
-  downloadUrl: "https://github.com/k4b41t1/cili-cidadelimpa/releases/download/Version/app-debug.apk",
+  downloadUrl: "https://github.com/k4b41t1/cili-cidadelimpa/releases/download/Version/app-release.apk",
   pixKey: "cili.cidadelimpa@gmail.com",
   pixOwner: "CiLi - Cidade Limpa",
 };
