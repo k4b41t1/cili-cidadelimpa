@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ouvidoria CiLi</title>
+    <style>
+      :root {
+        --bg: #f8fafc;
+        --card: #ffffff;
+        --text: #0f172a;
+        --muted: #334155;
+        --line: #e2e8f0;
+        --ok-bg: #dcfce7;
+        --ok-text: #166534;
+        --err-bg: #fee2e2;
+        --err-text: #991b1b;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        padding: 20px;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Arial, sans-serif;
+      }
+      .card {
+        max-width: 860px;
+        margin: 0 auto;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 16px;
+      }
+      .title { font-size: 22px; margin: 0 0 10px; }
+      .meta { font-size: 13px; color: var(--muted); line-height: 1.5; }
+      .flash-ok, .flash-err {
+        margin-top: 10px;
+        border-radius: 10px;
+        padding: 10px;
+        font-weight: 700;
+      }
+      .flash-ok { background: var(--ok-bg); color: var(--ok-text); }
+      .flash-err { background: var(--err-bg); color: var(--err-text); }
+      .actions { margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap; }
+      button {
+        background: #0f172a;
+        color: #fff;
+        border: 0;
+        border-radius: 10px;
+        min-height: 40px;
+        padding: 0 14px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      button:disabled { opacity: 0.6; cursor: not-allowed; }
+      .chat-box { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 14px; }
+      .chat-list {
+        background: #f8fafc;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 10px;
+        max-height: 280px;
+        overflow: auto;
+      }
+      .msg { border-radius: 10px; padding: 8px 10px; margin-bottom: 8px; }
+      .msg.ombudsman { background: #ecfdf5; border: 1px solid #bbf7d0; }
+      .msg.citizen { background: #dbeafe; border: 1px solid #bfdbfe; }
+      .sender { font-size: 11px; font-weight: 800; margin-bottom: 4px; }
+      .body { font-size: 13px; line-height: 1.4; }
+      .time { font-size: 10px; color: #64748b; margin-top: 4px; }
+      textarea, input {
+        width: 100%;
+        border: 1px solid #cbd5e1;
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 13px;
+      }
+      .field { margin-top: 10px; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1 class="title">Painel de Ouvidoria CiLi</h1>
+      <div class="meta" id="meta"></div>
+      <div id="flash"></div>
+      <div class="actions">
+        <button id="markBtn" type="button">Marcar como Em analise</button>
+      </div>
+
+      <div class="chat-box">
+        <h3>Chat com o cidadao</h3>
+        <div class="chat-list" id="chatList"></div>
+        <div class="field">
+          <input id="senderDisplay" placeholder="Assinatura (ex.: Ouvidoria Municipal)" />
+        </div>
+        <div class="field">
+          <textarea id="message" rows="4" placeholder="Escreva uma mensagem para o cidadao"></textarea>
+        </div>
+        <div class="actions">
+          <button id="sendBtn" type="button">Enviar mensagem</button>
+        </div>
+      </div>
+    </div>
+    <script src="./ouvidoria.js"></script>
+  </body>
+</html>
