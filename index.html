@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CiLi - Cidade Limpa</title>
+    <meta
+      name="description"
+      content="CiLi conecta cidadãos e poder público para reportar problemas urbanos com evidência, mapa colaborativo e pressão social positiva."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-shape bg-shape-a"></div>
+    <div class="bg-shape bg-shape-b"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <img
+          class="brand-logo"
+          src="./assets/logo.png"
+          alt="Logo CiLi"
+          onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/k4b41t1/cili-cidadelimpa/main/assets/icon.png';"
+        />
+        <span>CiLi <strong>Cidade Limpa</strong></span>
+      </div>
+      <nav class="menu">
+        <a href="#como-funciona">Como Funciona</a>
+        <a href="#mapa-publico">Mapa Público</a>
+        <a href="#apoie">Apoie</a>
+      </nav>
+      <div class="platform-badges" aria-label="Status das plataformas">
+        <span class="platform-badge platform-badge-on">Android disponível</span>
+        <span class="platform-badge platform-badge-off">iOS em breve</span>
+      </div>
+      <a class="btn btn-primary" id="downloadHeaderBtn" href="#" target="_blank" rel="noreferrer">Baixar App (Android)</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Plataforma cidadã para zeladoria urbana</p>
+          <h1>Sua rua tem problema? Registre, publique e gere resposta.</h1>
+          <p>
+            A CiLi ajuda moradores a documentar ocorrências urbanas com foto, localização e evidências.
+            Com apoio da comunidade, cada relato ganha relevância para acelerar retornos e resoluções.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" id="downloadPrimaryBtn" href="#" target="_blank" rel="noreferrer">Baixar agora (Android)</a>
+            <a class="btn btn-ghost" href="#mapa-publico">Ver publicações no mapa</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h2>O que você pode fazer na CiLi</h2>
+          <ul>
+            <li>Registrar problemas com foto e localização</li>
+            <li>Publicar no Mapa CiLi para mobilizar vizinhos</li>
+            <li>Receber apoios e comentários da comunidade</li>
+            <li>Gerar envio formal para órgãos públicos</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="como-funciona" class="section">
+        <div class="section-head">
+          <p class="eyebrow">Como funciona</p>
+          <h2>Do registro ao impacto</h2>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <span>1</span>
+            <h3>Registre</h3>
+            <p>Fotografe o problema e confirme local e categoria.</p>
+          </article>
+          <article class="step">
+            <span>2</span>
+            <h3>Publique</h3>
+            <p>O ponto entra no mapa e a comunidade pode apoiar.</p>
+          </article>
+          <article class="step">
+            <span>3</span>
+            <h3>Fortaleça</h3>
+            <p>Mais apoios e comentários aumentam visibilidade e pressão.</p>
+          </article>
+          <article class="step">
+            <span>4</span>
+            <h3>Resolva</h3>
+            <p>Acompanhe status e registre retorno da resolução.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="mapa-publico" class="section map-section">
+        <div class="section-head">
+          <p class="eyebrow">Mapa público CiLi</p>
+          <h2>Publicações cidadãs por município</h2>
+        </div>
+
+        <div class="map-controls">
+          <label>
+            Município
+            <select id="cityFilter"></select>
+          </label>
+          <label>
+            Status
+            <select id="statusFilter">
+              <option value="todos">Todos</option>
+              <option value="pendente">Pendentes</option>
+              <option value="resolvido">Resolvidos</option>
+            </select>
+          </label>
+          <button id="reloadBtn" class="btn btn-ghost">Atualizar</button>
+        </div>
+
+        <div class="map-grid">
+          <div class="map-card">
+            <div id="publicMap"></div>
+            <p id="mapHint" class="hint">Carregando publicações...</p>
+          </div>
+
+          <aside class="ranking-card">
+            <h3>Top 5 problemas no município</h3>
+            <p class="hint" id="rankingHint">Classificação por volume de relatos, apoios e comentários.</p>
+            <div id="rankingList" class="ranking-list"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section donation" id="apoie">
+        <div class="section-head">
+          <p class="eyebrow">Apoie a CiLi</p>
+          <h2>Doação voluntária via PIX</h2>
+        </div>
+        <p>
+          Sua contribuição ajuda na manutenção de servidores, programadores e equipe administrativa
+          que sustentam a evolução da plataforma.
+        </p>
+
+        <div class="pix-card">
+          <div>
+            <p class="pix-label">Chave PIX</p>
+            <p id="pixKey" class="pix-key">carregando...</p>
+            <p id="pixOwner" class="hint"></p>
+          </div>
+          <button id="copyPixBtn" class="btn btn-primary">Copiar chave PIX</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>CiLi - Cidade Limpa</p>
+      <p>Engajamento cidadão para cidades mais eficientes e responsivas.</p>
+      <p>Todo o conteúdo deste site foi desenvolvido pela equipe CiLi - Cidade Limpa.</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
